@@ -140,7 +140,7 @@ t2 = Thread(target = cmr)
 t2.setDaemon(True)
 t2.start()
 
-print 'Cihazlarin Baglanmasi Bekleniyor...' 
+print "Waiting for Devices to Connect..." 
 def sckt():
    global durum
    global delay
@@ -151,11 +151,11 @@ def sckt():
    try:
       s.bind((HOST, PORT)) 
    except socket.error as msg:
-      print 'Baglanti Hatasi : ' + str(msg[0]) + ' Hata: ' + msg[1]
+      print 'Connection Error : ' + str(msg[0]) + ' Error: ' + msg[1]
       sys.exit()
      
    s.listen(2) 
-   print 'Cihazlarin Baglanmasi Bekleniyor...' 
+   print "Waiting for Devices to Connect"...' 
    while 1:
     baglanti, adres = s.accept()
     mn = baglanti.recv(1024)
@@ -189,4 +189,4 @@ if __name__ == "__main__":
 	import thread
 	thread.start_new_thread(sckt,())
 	while True:
-		 x = raw_input ("DURUM:")
+		 x = raw_input ("STATUS:")
